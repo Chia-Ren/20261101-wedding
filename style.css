@@ -1,0 +1,468 @@
+/* ==========================================
+   一頁式電子喜帖 全域樣式 (style.css)
+   ========================================== */
+
+/* 1. 全域變數定義 */
+:root {
+  --bg-color: #fdfbf7;           /* 米白/暖色背景 */
+  --text-main: #333333;          /* 深灰主要文字 */
+  --text-muted: #777777;         /* 次要淡灰文字 */
+  --accent-color: #a3816a;       /* 奶茶色/大地色主題色 */
+  --card-bg: #ffffff;            /* 卡片純白背景 */
+  
+  /* 英文字體優先使用 Helvetica，中文使用微軟正黑體 */
+  --font-family-base: "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", "微軟正黑體", sans-serif;
+}
+
+/* 2. 基礎設定與平滑效果 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-family-base);
+  line-height: 1.8;
+  text-align: center;
+  
+  /* Mac / iOS 字體邊緣平滑優化 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. 滾動淡入 (Fade-in) 動畫效果 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 4. Hero 滿版主視覺區塊 */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)),
+              url('img/RAY_9043.jpg') center/cover no-repeat;
+  color: #ffffff;
+  padding: 0px;
+}
+
+/* --- 新增：上方文字容器的內距 --- */
+.hero-top-content {
+  padding-top: 35px; /* 距離頂端的距離，可調整 */
+  width: 100%;
+}
+
+/* --- 新增：下方文字容器的內距 --- */
+.hero-bottom-content {
+  padding-bottom: 60px; /* 距離底部的距離，可調整 */
+  /*width: 100%;*/
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    font-weight: 320;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hero-restaurant {
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    line-height: 2;
+}
+
+.hero-date {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin: 0px 0px 10px 0px;
+    /*border-top: 1px solid rgba(255, 255, 255, 0.6);*/
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 10px 0px 10px 0px;
+}
+
+/* ==========================================
+   新人與主婚人區塊 樣式
+   ========================================== */
+.hosts-section {
+  padding: 60px 20px;
+}
+
+.hosts-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+/* 左右兩側欄位 */
+.host-column {
+  flex: 1;
+  text-align: center;
+}
+
+.host-item {
+  margin-bottom: 30px;
+}
+
+.host-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 標籤小字 (如：新郎、新郎父母) */
+.host-label {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  font-weight: 300;
+}
+
+/* 新人姓名大字 */
+.host-name {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--text-main);
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+/* 父母姓名 */
+.parent-names {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-main);
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+/* 中間紅色「囍」字 */
+.double-happiness {
+  font-size: 2.8rem;
+  color: #e64a19; /* 經典質感紅色 */
+  font-weight: bold;
+  padding: 0 20px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* 手機版自動微調字體大小與間距 */
+@media (max-width: 576px) {
+  .host-name {
+    font-size: 1.8rem;
+  }
+  .parent-names {
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+  }
+  .double-happiness {
+    font-size: 2.2rem;
+    padding: 0 10px;
+  }
+}
+
+/* 5. 通用內容區塊設定 */
+section {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent-color);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* 6. 倒數計時器 (Countdown Timer) */
+.timer-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.timer-box {
+  background: var(--card-bg);
+  border: 1px solid #eae5dd;
+  padding: 15px;
+  min-width: 75px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.timer-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  display: block;
+  line-height: 1;
+}
+
+.timer-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+/* 7. 相片牆藝廊 (Gallery Grid) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 35px;
+  margin-top: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
+}
+
+/* 8. 資訊卡片與按鈕 */
+.card-custom {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 40px 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0eae1;
+}
+
+.info-line {
+  margin: 12px 0;
+  font-size: 1.05rem;
+}
+
+.btn-custom {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 35px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+  background-color: #8c6d57;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* 9. RSVP 表單區塊 */
+.rsvp-frame {
+  width: 100%;
+  height: 650px;
+  border: none;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* 10. 頁尾 */
+footer {
+    padding: 40px 20px 20px 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    background-color: #ebebeb;
+}
+
+/* --- 相片牆調整 --- */
+.gallery-grid img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 10px 10px 10px 3px rgb(0 0 0 / 25%);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+
+/* --- Lightbox 放大彈窗樣式 --- */
+.lightbox {
+  display: none; /* 預設隱藏 */
+  position: fixed;
+  z-index: 9999; /* 確保浮在網頁最上層 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85); /* 半透明黑背景 */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(5px); /* 背景高斯模糊效果，極具質感 */
+}
+
+/* 放大後的圖片 */
+.lightbox-content {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease; /* 放大淡入動畫 */
+}
+
+/* 右上角關閉按鈕 ✕ */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 0.7;
+}
+
+/* 圖片彈出動態效果 */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   Dress Code 著裝區塊 樣式
+   ========================================== */
+.dress-code-section {
+  padding: 10px 20px;
+}
+
+.palette-wrapper {
+  max-width: 450px;
+  margin: 30px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* 上下排之間的間距 */
+}
+
+.palette-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px; /* 每個色塊之間的橫向間距 */
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 色區圓圈基礎樣式 + 右下角陰影 */
+.color-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  /* 右下角立體陰影：水平 4px, 垂直 5px, 模糊 10px, 透明度黑 */
+  box-shadow: 7px 8px 12px 4px rgb(0 0 0 / 20%);
+  transition: transform 0.2s ease;
+}
+
+/* 滑鼠懸停效果 (微幅放大) */
+.color-circle:hover {
+  transform: translateY(-3px);
+}
+
+/* 精確擷取圖片中的顏色 */
+.color-cream {
+  background-color: #fffaea;
+  border: 1px solid #EFEAE0; /* 淺色圓圈加上極細邊框，防止與白背景融為一體 */
+}
+
+.color-grey {
+  background-color: #A5A5A5;
+}
+
+.color-purple {
+  background-color: #D1bfe8;
+}
+
+.color-pink {
+  background-color: #f6daeb;
+}
+
+.color-red {
+  background-color: #ab1515;
+}
+
+/* 顏色文字標籤 */
+.color-label {
+  font-size: 0.88rem;
+  color: var(--text-muted, #666666);
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+/* 手機版微調間距與大小 */
+@media (max-width: 576px) {
+  .palette-row {
+    gap: 25px;
+  }
+  .color-circle {
+    width: 48px;
+    height: 48px;
+  }
+}
